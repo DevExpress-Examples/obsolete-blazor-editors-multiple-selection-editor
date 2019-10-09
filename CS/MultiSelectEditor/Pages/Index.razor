@@ -1,0 +1,20 @@
+﻿@page "/"
+@using MultiSelectEditor.Components
+<div>Examaple 1</div>
+<MultiSelectEditor1 Items="@AllBrowsers" Value="@TextValue" ValueSeparator=";"></MultiSelectEditor1>
+<div>Examaple 2</div>
+<MultiSelectEditor2 Items="@AllBrowsers" Value="@TextValue" ValueSeparator=";"></MultiSelectEditor2>
+@code {
+    string TextValue = "Chrome;Safari";
+    List<string> AllBrowsers;
+    protected override void OnInitialized() {
+        var allBrowsers = new List<string>();
+        allBrowsers.Add("Chrome");
+        allBrowsers.Add("Firefox");
+        allBrowsers.Add("IE");
+        allBrowsers.Add("Safari");
+        allBrowsers.Add("Opera");
+        allBrowsers.Add("Edge");
+        AllBrowsers = allBrowsers;
+    }
+}

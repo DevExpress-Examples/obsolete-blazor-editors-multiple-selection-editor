@@ -1,0 +1,39 @@
+﻿@inject IJSRuntime JsRuntime;
+<div class="dropdown" style="width:250px">
+    <div class="input-group flex-nowrap" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+         @onclick="@(() => SelectedItems = Value.Split(ValueSeparator).ToList())">
+        <DxTextBox Text="@Value" ReadOnly="true"></DxTextBox>
+        <div class="input-group-append">
+            <button class="btn btn-secondary dropdown-toggle my-0" style="margin-left:-2px" type="button">
+            </button>
+        </div>
+    </div>
+    <div class="dropdown-menu border-0 my-0 py-0" aria-labelledby="dropdownMenuButton">
+        <DxListBox Data="@Items" ShowCheckboxes="true" SelectionMode="ListBoxSelectionMode.Multiple"
+                   @bind-SelectedItems="@SelectedItems" CssClass="MyListBox">
+        </DxListBox>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string Value { get; set; }
+    [Parameter]
+    public string ValueSeparator { get; set; }
+    [Parameter]
+    public List<string> Items { get; set; }
+    private IEnumerable<string> selectedItems;
+    private IEnumerable<string> SelectedItems {
+        get => selectedItems;
+        set {
+            selectedItems = value;
+            Value = String.Join(ValueSeparator, selectedItems);
+            InvokeAsync(StateHasChanged);
+        }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender) {
+        if (firstRender) {
+            await JsRuntime.InvokeAsync<bool>("dropdownElementContainerInit");
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}
