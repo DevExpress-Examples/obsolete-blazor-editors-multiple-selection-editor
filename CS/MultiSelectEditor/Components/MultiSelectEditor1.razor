@@ -1,5 +1,5 @@
 ﻿<div style="width:250px">
-    <DxTextBox Text="@Value" ReadOnly="true" @onclick="@(() => { SelectedItems = Value.Split(ValueSeparator).ToList(); PopupVisible = true; })"></DxTextBox>
+    <DxTextBox Text="@Value" ReadOnly="true" @onclick="@(() => { SelectedItems = Value.Split(ValueSeparator).Where(x => !string.IsNullOrWhiteSpace(x)).ToList(); PopupVisible = true; })"></DxTextBox>
 </div>
 @if (PopupVisible) {
     <DxPopup HeaderText="Header" CloseButtonClick="@(() => PopupVisible = false)">
@@ -13,7 +13,7 @@
                         <span>Select items</span>
                     </div>
                     <div class="col-sm">
-                        <a class="oi oi-x float-right" href="javascript:;" @onclick="@(() => { SelectedItems = Value.Split(ValueSeparator).ToList(); PopupVisible = false; })"></a>
+                        <a class="oi oi-x float-right" href="javascript:;" @onclick="@(() => { SelectedItems = Value.Split(ValueSeparator).Where(x => !string.IsNullOrWhiteSpace(x)).ToList(); PopupVisible = false; })"></a>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,10 @@
 }
 @code {
     [Parameter]
-    public string Value { get; set; }
+    public string Value { 
+        get; 
+        set; 
+    }
     [Parameter]
     public string ValueSeparator { get; set; }
     [Parameter]
