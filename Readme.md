@@ -12,3 +12,6 @@ This example illustrates two different ways to implement the multiple selection 
  
 - In the first way, our DxListBox component is placed inside our DxPopup component. 
 - In the second way, the [Bootstrap Dropdown widget](https://getbootstrap.com/docs/4.0/components/dropdowns/) is used, and DxListBox is placed inside that. This approach requires including the following JS libraries: jQuery, Popper, Bootstrap. 
+
+**UPDATED**:
+Starting with version 19.2.3, we implemented the [TagBox](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxTagBox-1) editor, which allows users to select multiple items (tags) from a predefined drop-down list. Please check the [TagBox demo](https://demos.devexpress.com/Blazor/TagBox) illustrating this editor.
