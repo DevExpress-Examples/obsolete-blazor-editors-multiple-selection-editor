@@ -2,7 +2,7 @@
 <div class="dropdown" style="width:250px">
     <div class="input-group flex-nowrap" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
          @onclick="@(() => SelectedItems = Value.Split(ValueSeparator).ToList())">
-        <DxTextBox Text="@Value" ReadOnly="true"></DxTextBox>
+        <DxTextBox Text="@Value" ReadOnly="true" SizeMode="SizeMode.Large"></DxTextBox>
         <div class="input-group-append">
             <button class="btn btn-secondary dropdown-toggle my-0" style="margin-left:-2px" type="button">
             </button>
@@ -10,7 +10,7 @@
     </div>
     <div class="dropdown-menu border-0 my-0 py-0" aria-labelledby="dropdownMenuButton">
         <DxListBox Data="@Items" ShowCheckboxes="true" SelectionMode="ListBoxSelectionMode.Multiple"
-                   @bind-SelectedItems="@SelectedItems" CssClass="MyListBox">
+                   @bind-Values="@SelectedItems" CssClass="MyListBox">
         </DxListBox>
     </div>
 </div>

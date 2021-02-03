@@ -1,5 +1,5 @@
 ﻿<div style="width:250px">
-    <DxTextBox Text="@Value" ReadOnly="true" @onclick="@(() => { SelectedItems = Value.Split(ValueSeparator).Where(x => !string.IsNullOrWhiteSpace(x)).ToList(); PopupVisible = true; })"></DxTextBox>
+    <DxTextBox Text="@Value" ReadOnly="true" SizeMode="SizeMode.Large" @onclick="@(() => { SelectedItems = Value.Split(ValueSeparator).Where(x => !string.IsNullOrWhiteSpace(x)).ToList(); PopupVisible = true; })"></DxTextBox>
 </div>
 @if (PopupVisible) {
     <DxPopup HeaderText="Header" CloseButtonClick="@(() => PopupVisible = false)">
@@ -20,7 +20,7 @@
         </HeaderTemplate>
         <ChildContent>
             <DxListBox Data="@Items" ShowCheckboxes="true" SelectionMode="ListBoxSelectionMode.Multiple"
-                       @bind-SelectedItems="@SelectedItems">
+                       @bind-Values="@SelectedItems">
             </DxListBox>
         </ChildContent>
     </DxPopup>
