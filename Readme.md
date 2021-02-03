@@ -7,6 +7,9 @@
 <!-- default file list end -->
 
 ### Blazor Editors - How to implement the multiple selection editor 
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/213938381/)**
+<!-- run online end -->
 
 This example illustrates two different ways to implement the multiple selection editor. In both case our DxListBox box is used.
  
