@@ -1,10 +1,9 @@
 ﻿<div style="width:250px">
     <DxTextBox Text="@Value" ReadOnly="true" SizeMode="SizeMode.Large" @onclick="@(() => { SelectedItems = Value.Split(ValueSeparator).Where(x => !string.IsNullOrWhiteSpace(x)).ToList(); PopupVisible = true; })"></DxTextBox>
 </div>
-@if (PopupVisible) {
-    <DxPopup HeaderText="Header" CloseButtonClick="@(() => PopupVisible = false)">
+    <DxPopup @bind-Visible="@PopupVisible" HeaderText="Header" CloseButtonClick="@(() => PopupVisible = false)">
         <HeaderTemplate>
-            <div class="container">
+            <div class="container padding-top-15" >
                 <div class="row">
                     <div class="col-sm">
                         <a class="oi oi-check" href="javascript:;" @onclick="@(() => { Value = String.Join(ValueSeparator, SelectedItems); PopupVisible = false; })"></a>
@@ -24,7 +23,6 @@
             </DxListBox>
         </ChildContent>
     </DxPopup>
-}
 @code {
     [Parameter]
     public string Value { 

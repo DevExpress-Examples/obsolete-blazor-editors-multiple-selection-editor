@@ -4,6 +4,10 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.padding-top-15 {
+    padding-top: 15px;
+}
+
 a, .btn-link {
     color: #0366d6;
 }
